@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  web:
+    container_name: "backend_TestTask"
+    build: ./web
+    volumes:
+      - .:/backend
+    ports:
+      - "8095:8095"
+    depends_on:
+      - db
+    networks:
+      - web
+    environment:
+      - PYTHONUNBUFFERED=1
+  db:
+    image: mysql:8.0.27
+    container_name: "db_TestTask"
+    ports:
+      - "3311:3306"
+    environment:
+      MYSQL_DATABASE: 'db_TestTask'
+      MYSQL_USER: 'viktor'
+      MYSQL_PASSWORD: '14051998'
+      MYSQL_ROOT_PASSWORD: 'password'
+    restart: always
+    networks:
+      - web
+    volumes:
+      - ./db_TestTask:/var/lib/mysql
+
+networks:
+  web:
+    driver: bridge
