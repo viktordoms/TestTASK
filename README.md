@@ -2,6 +2,8 @@ That start this project you need install some library. Open terminal and enter n
 - sudo apt-get install docker-ce docker-ce-cli containerd.io
 - npm install -g npm 
 
+When you download application in your computer - need rename file 'env.example' to '.env'
+
 
 1.Run backend:
 
@@ -25,7 +27,7 @@ That start this project you need install some library. Open terminal and enter n
 
    1.4.5 Wait when migrate is finished and close this terminal window
 
-1.5 Then you need restart docker-conteiner ('CTRL+C' and then 'sudo docker-compose up')
+1.5 Then you need restart docker-container ('CTRL+C' and then 'sudo docker-compose up')
 
 2.Run frontend:
 

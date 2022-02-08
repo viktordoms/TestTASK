@@ -64,15 +64,9 @@ DATABASES = {
         'USER': config('DATABASES.USER'),
         'PASSWORD': config('DATABASES.PASSWORD'),
         'HOST': config('DATABASES.HOST'),
-        'PORT': config('DATABASES.POST'),
+        'PORT': config('DATABASES.PORT'),
         'NETWORK': config('DATABASES.NETWORK'),
-        'TEST': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': config('TEST.DATABASES.NAME'),
-            'USER': 'user',
-            'PASSWORD': config('TEST.DATABASES.PASSWORD'),
-            'HOST': 'localhost',
-        },
+
     }
 }
 
