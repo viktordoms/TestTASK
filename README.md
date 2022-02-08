@@ -2,7 +2,9 @@ That start this project you need install some library. Open terminal and enter n
 - sudo apt-get install docker-ce docker-ce-cli containerd.io
 - npm install -g npm 
 
-When you download application in your computer - need rename file 'env.example' to '.env'
+When you download application in your computer - need rename file 'env.example' to '.env':
+
+- in terminal /TestTask enter 'mv env.example .env'
 
 
 1.Run backend:
@@ -33,6 +35,8 @@ When you download application in your computer - need rename file 'env.example' 
 
 2.1 open new terminal window and go in /TestTask/frontend 
 
-2.2 enter : npm start
+2.2 install all library enter: npm i
+
+2.2 Start React enter : npm start
 
 Application is running.
