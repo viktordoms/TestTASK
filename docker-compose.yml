@@ -12,6 +12,8 @@ services:
       - db
     networks:
       - web
+    env_file:
+      - .env
     environment:
       - PYTHONUNBUFFERED=1
   db:
@@ -21,8 +23,8 @@ services:
       - "3311:3306"
     environment:
       MYSQL_DATABASE: 'db_TestTask'
-      MYSQL_USER: 'viktor'
-      MYSQL_PASSWORD: '14051998'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: '123456789'
       MYSQL_ROOT_PASSWORD: 'password'
     restart: always
     networks:

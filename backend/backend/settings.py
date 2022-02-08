@@ -1,16 +1,13 @@
 import os
+from decouple import config
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@#ad8v3(v)$-u!nc@v07=_2l-dm#8$2_(rij%neak*%d5@(b=%'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
@@ -60,23 +57,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "db_TestTask",
-        'USER': 'viktor',
-        'PASSWORD': '14051998',
-        'HOST': 'db',
-        'PORT': '3306',
-        'NETWORK': 'web',
+        'ENGINE': config('DATABASES.ENGINE'),
+        'NAME': config('DATABASES.NAME'),
+        'USER': config('DATABASES.USER'),
+        'PASSWORD': config('DATABASES.PASSWORD'),
+        'HOST': config('DATABASES.HOST'),
+        'PORT': config('DATABASES.POST'),
+        'NETWORK': config('DATABASES.NETWORK'),
+        'TEST': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': config('TEST.DATABASES.NAME'),
+            'USER': 'user',
+            'PASSWORD': config('TEST.DATABASES.PASSWORD'),
+            'HOST': 'localhost',
+        },
     }
 }
-
-# Password validation
-# https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -92,9 +90,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-# Internationalization
-# https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -117,6 +112,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
 
 CORS_ALLOW_ALL_ORIGINS = True
